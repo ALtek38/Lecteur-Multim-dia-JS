@@ -1,0 +1,61 @@
+body {
+	display : flex;
+	flex-direction : row;
+	justify-content : center;
+	justify-content : space-between;
+	justify-content : space-around;
+}
+
+#affichageListeLecture {
+	display : flex;
+	flex-direction : column;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+#liste {
+	display : flex;
+	flex-direction : column;
+}
+
+#interface {
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+#controlLecteur {
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+	display : flex;
+	justify-content : center;
+}
+
+#ajoutDirect {
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+	display : flex;
+}
+
+#Modifier {
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+	display : flex;
+}
+
+
+#boutonPlay {
+	/* margin-left:20px; */
+}
+
+#boutonPause {
+	/* margin-left:3px; */
+}
+
+#boutonSuivant {
+	/* margin-left:30px; */
+}

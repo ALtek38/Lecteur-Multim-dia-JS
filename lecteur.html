@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang=fr>
+  <head>
+    <title>Vue du lecteur</title>
+    <meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="lecteur.css"/>
+  </head>
+  <body>
+	<div id="interface">
+		<video id="lecteurVideo">
+		</video>
+		<div id="controlLecteur">
+			<button class="button" id="boutonPlay">►</button>
+			<button class="button" id="boutonPause"><strong>ll</strong></button>
+			<button class="button" id="boutonSuivant">►►<strong>l</strong></button>
+		</div>
+	</div>
+	<div id="affichageListeLecture">
+		<h1> Liste de lecture </h1>
+		<div id="liste">
+		</div>
+		<div id="controlListe">
+			<div id="ajoutLien">
+				<button class="button" id="boutonAjouterWeb">Ajouter avec une video avec un lien web</button>
+				<input type="text" id="lienWeb"/>
+			</div>
+			<div id="ajoutRSS">
+				<img class="image" id="logoRSS" src="RSS_Logo.png" width="20" alt=""/>
+				<button class="button" id="boutonAjouterRSS">Ajouter une playlist avec un flux RSS</button>
+				<input type="text" id="lienRSS"/>
+			</div>
+			<div id="Modifier">
+				<button class="button" id="boutonSupprimer">Supprimer</button>
+				<button class="button" id="boutonMonter">/\</button>
+				<button class="button" id="boutonDescendre">\/</button>
+			</div>
+		</div>
+	</div>
+	<script src="lecteur.js"></script>
+  </body>
+</html>
