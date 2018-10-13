@@ -42,6 +42,10 @@ window.addEventListener('load', function() {
 				var video = reponseXML.getElementsByTagName("guid");
 				var titre = reponseXML.getElementsByTagName("title");
 				var playListe = document.getElementById("liste");
+				var video_url = reponseXML.getElementsByTagName //Trouver la liste des urls des videos pour pouvoir les lancer quand on clique sur la div
+				for (var i=2; i<titre.length; i++)
+				{
+				}
 				for(var i=2; i<titre.length; i++) 
 				{
 					titre_à_ecrire = titre[i].childNodes[0].nodeValue;
@@ -50,7 +54,7 @@ window.addEventListener('load', function() {
 					var division = document.createElement("div");
 					division.setAttribute("id",(i-2));
 
-					//Création du titre audio
+					//Création du titre
 					var title = document.createElement("p");
 					var titre_txt = document.createTextNode(titre_à_ecrire);
 					title.setAttribute("id","titre");
@@ -74,9 +78,12 @@ window.addEventListener('load', function() {
 					division.addEventListener("click", function () 
 					{
 						testId = division.getAttribute("id");
-						var sourced = document.getElementById("source");
+						console.log(testId);
+						console.log(video[testId].childNodes[0].nodeValue);
+						lancer(video_url[testId].childNodes[0].nodeValue);
+						/*var sourced = document.getElementById("source");
 						sourced.setAttribute("src",video_xml[testId].childNodes[0].nodeValue);
-						video.load();
+						video.load();*/
 					});
 					liste.appendChild(division);
 					
