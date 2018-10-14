@@ -18,6 +18,7 @@ window.addEventListener('load', function() {
 	function pause()
 	{
 		lecteurVideo.pause();
+		//La valeur lecteurVideo.duration aurait dû servir à creer une horloge pour indiquer le temps de la video
 		console.log(lecteurVideo.duration);
 	}
 	
@@ -87,7 +88,6 @@ window.addEventListener('load', function() {
 					var suivant = document.getElementById('boutonSuivant');
 					suivant.addEventListener('click', function()
 					{
-						console.log(idEnCours);
 						videoSuivante(video[idEnCours].getAttribute('url'));
 					});
 				}
