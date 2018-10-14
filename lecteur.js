@@ -6,15 +6,9 @@ window.addEventListener('load', function() {
 	document.getElementById('boutonPause').addEventListener('click', pause);
 	document.getElementById('boutonAjouterRSS').addEventListener('click', ajouterRSS);
 	document.getElementById('boutonAjouterWeb').addEventListener('click', ajouterWeb);
-	var url = "http://feeds.radiokawa.com/podcast_faster-than-light.xml";
+	var idEnCours = 0;
+	var url;
 
-	
-	function lancer(lien)
-	{
-		var urlVideo= document.getElementById(lien).value;
-		lecteurVideo.innerHTML = '<source src='+urlVideo+'>';
-		lecteurVideo.load();
-	}
 	
 	function play()
 	{
@@ -29,23 +23,26 @@ window.addEventListener('load', function() {
 	
 	function ajouterWeb()
 	{
-		lancer('lienWeb');
+		lecteurVideo.setAttribute('src',document.getElementById('lienWeb').value);
+		lecteurVideo.load();
 	}
 		
+	var suivant = document.getElementById('boutonSuivant');
+	suivant.addEventListener('click',function()
+	{
+		idEnCours += 1;		
+	});
+	
 	function ajouterRSS()
 	{
 		//Récupération du flux rss
 		var xml = new XMLHttpRequest();
+		url = document.getElementById('lienRSS').value;
 		xml.addEventListener('readystatechange',function(){
 			if(this.readyState == 4 && this.status == 200) {
 				var reponseXML = this.responseXML;
-				var video = reponseXML.getElementsByTagName("guid");
+				var video = reponseXML.getElementsByTagName("enclosure");
 				var titre = reponseXML.getElementsByTagName("title");
-				var playListe = document.getElementById("liste");
-				var video_url = reponseXML.getElementsByTagName //Trouver la liste des urls des videos pour pouvoir les lancer quand on clique sur la div
-				for (var i=2; i<titre.length; i++)
-				{
-				}
 				for(var i=2; i<titre.length; i++) 
 				{
 					titre_à_ecrire = titre[i].childNodes[0].nodeValue;
@@ -60,6 +57,7 @@ window.addEventListener('load', function() {
 					title.setAttribute("id","titre");
 					title.appendChild(titre_txt);
 					division.appendChild(title);
+
 
 					//Création du bouton supprimer
 					var suppr = document.createElement("button");
@@ -77,13 +75,11 @@ window.addEventListener('load', function() {
 					division.appendChild(suppr);
 					division.addEventListener("click", function () 
 					{
-						testId = division.getAttribute("id");
-						console.log(testId);
-						console.log(video[testId].childNodes[0].nodeValue);
-						lancer(video_url[testId].childNodes[0].nodeValue);
-						/*var sourced = document.getElementById("source");
-						sourced.setAttribute("src",video_xml[testId].childNodes[0].nodeValue);
-						video.load();*/
+						var testId = this.getAttribute("id");
+						idEnCours = parseInt(testId);
+						console.log('Chargement de la video en cours');
+						lecteurVideo.setAttribute('src',video[testId].getAttribute('url'));
+						lecteurVideo.load();
 					});
 					liste.appendChild(division);
 					
@@ -91,7 +87,8 @@ window.addEventListener('load', function() {
 					var suivant = document.getElementById('boutonSuivant');
 					suivant.addEventListener('click', function()
 					{
-				
+						console.log(idEnCours);
+						videoSuivante(video[idEnCours].getAttribute('url'));
 					});
 				}
 			}
@@ -100,6 +97,11 @@ window.addEventListener('load', function() {
 		xml.send();
 	}
 	
+	function videoSuivante(videoL)
+	{
+		lecteurVideo.setAttribute('src',videoL);
+		lecteurVideo.load();
+	}	
 	
 	
 });
